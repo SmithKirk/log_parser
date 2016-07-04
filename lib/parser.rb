@@ -14,4 +14,8 @@ class Parser
     end
   end
 
+  def visits_by_page
+    @visits_by_page = visits_log.group_by{ |visit| visit.page}
+  end
+
 end

@@ -19,4 +19,11 @@ describe Parser do
     end
   end
 
+  describe '#visits_by_page' do
+    it 'groups visits by page' do
+      parser.parse_file
+      expect(parser.visits_by_page.size).to eq 6
+    end
+  end
+
 end
