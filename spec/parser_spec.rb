@@ -1,15 +1,21 @@
 describe Parser do
 
-  subject(:parser){Parser.new(File.dirname(File.absolute_path(__FILE__))+"/test_webserver.log")}
-  let(:test_log){double ("test_log")}
+  subject(:parser){described_class.new(File.dirname(File.absolute_path(__FILE__))+"/test_webserver.log")}
 
-  describe '#initialise' do
-    it 'visits log should be empty' do
+  describe '#initialize' do
+    it 'will have an empty visits log array' do
       expect(parser.visits_log).to eq ([])
     end
 
-    it 'should have a path' do
+    it 'will have a path' do
       expect(parser.path).to end_with('test_webserver.log')
+    end
+  end
+
+  describe '#parse_file' do
+    it 'will iterate over log file instiating a LoggedVisit in visits log' do
+      parser.parse_file
+      expect(parser.visits_log).to include (LoggedVisit)
     end
   end
 
