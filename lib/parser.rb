@@ -1,3 +1,4 @@
+
 class Parser
 
   attr_accessor :visits_log, :path
@@ -19,15 +20,29 @@ class Parser
   end
 
   def visits_by_page_counted_and_ordered
-    visits_by_page.map { |page, visits| [page, visits.count]}.sort{ |a, b| b[-1] <=> a[-1]}
+    descending_sort(visits_by_page.map do |page, visits|
+      [page, visits.count]
+    end)
+  end
+
+  def unique_visits_by_page
+    descending_sort(visits_by_page.map do |page, visits|
+       [page, visits.map{|obj| obj.ip_address}.uniq.count]
+    end)
   end
 
   def print_page_visits
   print_result = ""
+  
   visits_by_page_counted_and_ordered.each do|page, visits|
       print_result += "#{page} #{visits} visits\n"
     end
     print_result
+  end
+
+  private
+  def descending_sort(array)
+    array.sort{ |a, b| b[-1] <=> a[-1]}
   end
 
 end
