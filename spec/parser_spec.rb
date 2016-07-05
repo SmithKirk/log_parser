@@ -20,6 +20,7 @@ describe Parser do
     describe '#parse_file' do
       it 'will iterate over log file instiating a LoggedVisit in visits log' do
         expect(parser.visits_log).to include (LoggedVisit)
+        expect(parser.visits_log.size).to eq 8
       end
     end
 
