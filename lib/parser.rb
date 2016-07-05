@@ -1,7 +1,7 @@
-
+require_relative 'logged_visit'
 class Parser
 
-  attr_accessor :visits_log, :path
+  attr_reader :visits_log, :path
 
   def initialize(path)
     @path = path
