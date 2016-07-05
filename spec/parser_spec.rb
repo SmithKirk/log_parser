@@ -22,7 +22,22 @@ describe Parser do
   describe '#visits_by_page' do
     it 'groups visits by page' do
       parser.parse_file
-      expect(parser.visits_by_page.size).to eq 6
+      expect(parser.visits_by_page.size).to eq 4
+    end
+  end
+
+  describe '#visits_by_page_counted_and_ordered' do
+    it 'will order pages by visit count' do
+      parser.parse_file
+      parser.visits_by_page_counted_and_ordered
+      expect(parser.visits_by_page_counted_and_ordered.size).to eq 4
+    end
+  end
+
+  describe '#print_page_visits' do
+    it 'will display list of pages visited' do
+      parser.parse_file
+      expect(parser.print_page_visits).to eq ("/help_page/1 3 visits\n/home 2 visits\n/about 2 visits\n/contact 1 visits\n")
     end
   end
 
