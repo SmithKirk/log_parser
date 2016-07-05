@@ -50,6 +50,11 @@ describe Parser do
       end
     end
 
-    # "/help_page/1 2 unique views\n/home 2 unique views\n/about 2 unique views\n/contact 1 unique views\n")
+    describe '#print_page_unique_visits' do
+      it 'will print pages by unique visited' do
+        expect(parser.print_page_unique_visits).to eq ("/help_page/1 2 unique views\n/about 2 unique views\n/home 2 unique views\n/contact 1 unique views\n")
+      end
+    end
+
   end
 end

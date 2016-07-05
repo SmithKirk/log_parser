@@ -33,11 +33,20 @@ class Parser
 
   def print_page_visits
   print_result = ""
-  
+
   visits_by_page_counted_and_ordered.each do|page, visits|
       print_result += "#{page} #{visits} visits\n"
     end
     print_result
+  end
+
+  def print_page_unique_visits
+    print_result = ""
+
+    unique_visits_by_page.each do|page, visits|
+        print_result += "#{page} #{visits} unique views\n"
+      end
+      print_result
   end
 
   private
